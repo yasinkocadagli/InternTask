@@ -1,11 +1,19 @@
 import React from "react";
+import "./TodoList.css";
 
-function ToDoList({ todos }) {
+function ToDoList({ todos, onDelete }) {
   return (
-    <div>
-      <ul>
+    <div className="list-wrapper">
+      <ul className="list-item">
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>
+            <button className=" checkbox fa-regular fa-square-check"></button>
+            {todo}
+            <button
+              onClick={() => onDelete(index)}
+              className="delete fa-solid fa-trash"
+            ></button>
+          </li>
         ))}
       </ul>
     </div>

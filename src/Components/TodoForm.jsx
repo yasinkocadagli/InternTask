@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import ToDoList from "./TodoList";
 
 function TodoForm() {
-    const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
 
   const addTodo = () => {
-    if (newTodo.trim() !== '') {
+    if (newTodo.trim() !== "") {
       setTodos([...todos, newTodo]);
-      setNewTodo('');
+      setNewTodo("");
     }
   };
+
+  const removeTodo = (index) => {
+    const newTodo = todos.filter((todo, i) => i !== index);
+    setTodos(newTodo);
+  };
+
+
+  
 
   return (
     <div>
@@ -22,13 +31,10 @@ function TodoForm() {
         />
         <button onClick={addTodo}>Ekle</button>
       </div>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
+
+      <ToDoList todos={todos}  onDelete={removeTodo}/>
     </div>
   );
 }
 
-export default TodoForm
+export default TodoForm;
