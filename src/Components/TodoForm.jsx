@@ -13,12 +13,9 @@ function TodoForm() {
   };
 
   const removeTodo = (index) => {
-    const newTodo = todos.filter((todo, i) => i !== index);
-    setTodos(newTodo);
+    const newTodos = todos.filter((todos, i) => i !== index);
+    setTodos(newTodos);
   };
-
-
-  
 
   return (
     <div>
@@ -32,7 +29,7 @@ function TodoForm() {
         <button onClick={addTodo}>Ekle</button>
       </div>
 
-      <ToDoList todos={todos}  onDelete={removeTodo}/>
+      <ToDoList todos={todos} onDelete={removeTodo} />
     </div>
   );
 }
