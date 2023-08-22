@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import ToDoList from "./TodoList";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth";
+
 
 function TodoForm() {
+  const dispatch=useDispatch()
+  const logoutHandler=(event)=>{
+    event.preventDefault()
+
+    dispatch(authActions.logout())
+  }
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
 
@@ -30,6 +39,7 @@ function TodoForm() {
       </div>
 
       <ToDoList todos={todos} onDelete={removeTodo} />
+      <button onClick={logoutHandler}>Logout</button>
     </div>
   );
 }
